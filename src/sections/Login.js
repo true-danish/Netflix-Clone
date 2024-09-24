@@ -1,8 +1,14 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { heroBackgroundURL } from "../utils/constants";
 import { signUpContext } from "../utils/myContext";
 
 import validate from "../utils/validate";
+import authUser from "../utils/authUser";
+import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signUp, setSignUp } = useContext(signUpContext);
@@ -10,15 +16,42 @@ const Login = () => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("sign in ", auth);
+        const { uid, email, displayName } = auth.currentUser;
+        dispatch(addUser({ uid, displayName, email }));
+        navigate("/browse");
+        // ...
+      } else {
+        console.log("sign out ", auth);
+
+        dispatch(removeUser());
+      }
+    });
+  }, []);
   const handleSignClick = (e) => {
     e.preventDefault();
     const data = validate({
-      email: emailRef.current.value,
-      name: nameRef.current.value,
-      password: passwordRef.current.value,
+      email: emailRef?.current?.value,
+      name: nameRef?.current?.value,
+      password: passwordRef?.current?.value,
     });
+
     setErrors(data);
+    if (errors.success);
+    authUser(
+      emailRef.current.value,
+      passwordRef.current.value,
+      signUp,
+      setErrors,
+      nameRef.current.value,
+      dispatch
+    );
   };
 
   return (
@@ -65,7 +98,7 @@ const Login = () => {
               ref={emailRef}
               className="bg-slate-800/40 px-4 py-4 border  placeholder:text-white border-solid border-gray-500 rounded-md outline-8 w-full max-w-lg"
               type="text"
-              placeholder="Email or mobile number"
+              placeholder="Email"
             />
             <p className="text-red-700 m-0 p-0">{errors.email}&nbsp;</p>
           </div>
@@ -82,7 +115,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
             />
-            <p className="text-red-700">{errors.password}&nbsp;</p>
+            <div className="text-red-700">{errors.password}&nbsp;</div>
           </div>
 
           <button

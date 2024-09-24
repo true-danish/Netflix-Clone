@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { heroBackgroundURL } from "../utils/constants";
 import GetStarted from "./GetStarted";
 

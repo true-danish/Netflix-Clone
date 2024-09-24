@@ -3,6 +3,8 @@ import Home from "./sections/Home";
 import Browse from "./sections/Browse";
 import HomeBody from "./components/HomeBody";
 import Login from "./sections/Login";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const appRoutes = createBrowserRouter([
   {
@@ -28,11 +30,13 @@ const appRoutes = createBrowserRouter([
 
 function App() {
   return (
-    <main className="bg-black text-white">
-      <main className="max-container">
-        <RouterProvider router={appRoutes} />
+    <Provider store={appStore}>
+      <main className="bg-black text-white">
+        <main className="max-container">
+          <RouterProvider router={appRoutes} />
+        </main>
       </main>
-    </main>
+    </Provider>
   );
 }
 
