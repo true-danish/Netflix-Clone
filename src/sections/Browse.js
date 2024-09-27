@@ -1,21 +1,17 @@
-import { useSelector } from "react-redux";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import Footer from "../components/Footer";
+import BrowseBody from "../components/BrowseBody";
+import SearchBody from "../components/SearchBody";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
-  const user = useSelector((store) => store.user);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (user === null) navigate("/login");
-  }, []);
+  const gptIsActive = useSelector((store) => store.gpt.isActive);
   return (
-    user && (
-      <section>
-        <Header />
-        Browse
-      </section>
-    )
+    <section>
+      <Header />
+      {gptIsActive ? <SearchBody /> : <BrowseBody />}
+      <Footer />
+    </section>
   );
 };
 

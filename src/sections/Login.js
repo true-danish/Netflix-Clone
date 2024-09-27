@@ -1,14 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { heroBackgroundURL } from "../utils/constants";
 import { signUpContext } from "../utils/myContext";
-
 import validate from "../utils/validate";
 import authUser from "../utils/authUser";
-import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
-import { onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signUp, setSignUp } = useContext(signUpContext);
@@ -17,23 +12,7 @@ const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("sign in ", auth);
-        const { uid, email, displayName } = auth.currentUser;
-        dispatch(addUser({ uid, displayName, email }));
-        navigate("/browse");
-        // ...
-      } else {
-        console.log("sign out ", auth);
-
-        dispatch(removeUser());
-      }
-    });
-  }, []);
   const handleSignClick = (e) => {
     e.preventDefault();
     const data = validate({
@@ -43,15 +22,17 @@ const Login = () => {
     });
 
     setErrors(data);
-    if (errors.success);
-    authUser(
-      emailRef.current.value,
-      passwordRef.current.value,
-      signUp,
-      setErrors,
-      nameRef.current.value,
-      dispatch
-    );
+
+    if (data.success) {
+      authUser(
+        emailRef?.current?.value,
+        passwordRef?.current?.value,
+        signUp,
+        setErrors,
+        nameRef?.current?.value,
+        dispatch
+      );
+    }
   };
 
   return (

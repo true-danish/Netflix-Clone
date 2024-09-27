@@ -5,7 +5,7 @@ import GetStarted from "./GetStarted";
 const HomeBody = () => {
   return (
     <section className={`relative  `}>
-      <div className="  overflow-hidden opacity-40    bg-yellow-600">
+      <div className="  overflow-hidden opacity-40    ">
         <img
           src={heroBackgroundURL}
           alt="background "

@@ -8,6 +8,7 @@
   * {
     font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
       sans-serif;
+    scroll-behavior: smooth;
     /* font-family: Roboto; */
   }
   .max-container {
@@ -17,5 +18,12 @@
   .max-container2 {
     max-width: 1440px;
     margin-inline: auto;
+  }
+  .myscroll {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .myscroll::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 }
