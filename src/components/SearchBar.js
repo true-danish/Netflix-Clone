@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import lang from "./../utils/languageConstants";
 import { useRef } from "react";
-import client from "../utils/openAI";
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 // import { GEMINI_AI_KEY, movieApiOptions } from "../utils/constants";
 import { addSearchList } from "../utils/moviesSlice";
