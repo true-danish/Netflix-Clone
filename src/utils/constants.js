@@ -45,5 +45,3 @@ export const movieApiOptions = {
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/original";
-export const OPEN_AI_KEY =
-  "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";
