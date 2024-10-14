@@ -5,7 +5,7 @@ import MovieListContainer from "./MovieListContainer";
 import useMovieList from "../hooks/useMovieList";
 
 const BrowseBody = () => {
-  // console.log("broseBody")
+  console.log("broseBody");
 
   useSetMovieDetails();
   useMovieList();

@@ -1,9 +1,10 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { heroBackgroundURL } from "../utils/constants";
 import { signUpContext } from "../utils/myContext";
 import validate from "../utils/validate";
 import authUser from "../utils/authUser";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
   const { signUp, setSignUp } = useContext(signUpContext);
@@ -12,6 +13,13 @@ const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const dispatch = useDispatch();
+  const [userEmail, setUserEmail] = useState("");
+  const emailData = useLocation()?.state?.userEmail;
+
+  useEffect(() => {
+    // console.log(userEmail);
+    setUserEmail(emailData);
+  }, []);
 
   const handleSignClick = (e) => {
     e.preventDefault();
@@ -70,11 +78,13 @@ const Login = () => {
 
           <div>
             <input
-              onInput={() => {
+              onChange={(e) => {
                 setErrors((prev) => {
                   return { ...prev, email: "" };
                 });
+                setUserEmail(e.target.value);
               }}
+              value={userEmail}
               autoComplete="on"
               ref={emailRef}
               className="bg-slate-800/40 px-4 py-4 border  placeholder:text-white border-solid border-gray-500 rounded-md outline-8 w-full max-w-lg"

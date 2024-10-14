@@ -5,6 +5,8 @@ import HomeBody from "./components/HomeBody";
 import Login from "./sections/Login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import MoviePage from "./components/MoviePage";
+import BrowseMain from "./sections/BrowseMain";
 
 const appRoutes = createBrowserRouter([
   {
@@ -24,7 +26,17 @@ const appRoutes = createBrowserRouter([
   },
   {
     path: "/browse",
-    element: <Browse />,
+    element: <BrowseMain />,
+    children: [
+      {
+        path: "/browse",
+        element: <Browse />,
+      },
+      {
+        path: "/browse/movie/:id",
+        element: <MoviePage />,
+      },
+    ],
   },
 ]);
 

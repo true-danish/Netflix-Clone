@@ -1,8 +1,9 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import {
+  removeAllMovies,
   removeMovie,
   removeMovieList,
   removePoster,
@@ -20,7 +21,7 @@ const useAuthChange = () => {
     // onAuthStateChanged return an unsubscribe function to remove the event listner.
     const unsubscirbe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // console.log("sign in ", auth);
+        console.log("sign in ", auth);
         // console.log(auth.currentUser);
         const { uid, email, displayName, photoURL } = auth.currentUser;
         dispatch(addUser({ uid, displayName, email, photoURL }));
@@ -29,10 +30,7 @@ const useAuthChange = () => {
       } else {
         console.log("sign out ", auth);
         dispatch(removeUser());
-        dispatch(removeMovie());
-        dispatch(removeTrailer());
-        dispatch(removePoster());
-        dispatch(removeMovieList());
+        dispatch(removeAllMovies());
         dispatch(removeGpt());
         navigate("/");
       }

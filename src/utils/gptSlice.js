@@ -1,4 +1,4 @@
-import { createSlice, isAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const gptSlice = createSlice({
   name: "GPT",
@@ -8,7 +8,7 @@ const gptSlice = createSlice({
   reducers: {
     toogleGpt: (state, action) => {
       state.isActive = !state.isActive;
-      console.log("toogle");
+      // console.log("toogle");
     },
     removeGpt: (state, action) => {
       console.log("yes");

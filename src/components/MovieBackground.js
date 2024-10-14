@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const MovieBackground = () => {
   const trailer = useSelector((store) => store.movies.trailer);

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { heroBackgroundURL } from "../utils/constants";
 import GetStarted from "./GetStarted";
 
 const HomeBody = () => {
+  const data = useSelector((store) => store.movies.poster);
   return (
     <section className={`relative  `}>
       <div className="  overflow-hidden opacity-40    ">
@@ -19,6 +20,7 @@ const HomeBody = () => {
         <p className="md:text-xl font-bold py-2">
           Starts at ₹149. Cancel at any time.
         </p>
+        <h1>{data}</h1>
         <GetStarted />
       </div>
     </section>

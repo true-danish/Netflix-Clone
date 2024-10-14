@@ -40,9 +40,10 @@ export const movieApiOptions = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYmFkZWI3ZjIwNjQwZjExNDA2OTA5MTdjNjNiMjFlNSIsIm5iZiI6MTcyNzE2MzI0Mi43NzEyNzksInN1YiI6IjY2ZjI2YTc1NmMzYjdhOGQ2NDhlMTQ4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Og5JtdCD1C-Y3RcC-5pcHgEy0xe8y0jj31DPP22d-2A",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/original";
+export const OPEN_AI_KEY =
+  "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";

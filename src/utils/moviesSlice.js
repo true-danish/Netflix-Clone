@@ -7,6 +7,7 @@ const moviesSlice = createSlice({
     trailer: "",
     poster: "",
     movieList: {},
+    searchList: [],
   },
   reducers: {
     addMovie: (state, action) => {
@@ -37,6 +38,16 @@ const moviesSlice = createSlice({
     removeMovieList: (state, action) => {
       state.movieList = {};
     },
+    addSearchList: (state, action) => {
+      state.searchList = action.payload;
+    },
+    removeAllMovies: (state, action) => {
+      state.movie = null;
+      state.trailer = "";
+      state.poster = "";
+      state.searchList = [];
+      state.movieList = {};
+    },
   },
 });
 
@@ -50,4 +61,6 @@ export const {
   removePoster,
   addMovieList,
   removeMovieList,
+  addSearchList,
+  removeAllMovies,
 } = moviesSlice.actions;

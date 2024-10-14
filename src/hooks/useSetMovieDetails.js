@@ -43,6 +43,7 @@ const fetchMovieTrailer = async (movie, dispatch) => {
 
 const useSetMovieDetails = () => {
   const dispatch = useDispatch();
+
   const getMoviesDetails = async () => {
     const moviesDetailsResponse = await fetch(
       "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
@@ -72,6 +73,7 @@ const useSetMovieDetails = () => {
 
   useEffect(() => {
     getMoviesDetails();
+    // eslint-disable-next-line
   }, []);
 };
 
