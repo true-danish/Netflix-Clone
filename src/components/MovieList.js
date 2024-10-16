@@ -25,9 +25,8 @@ const MovieList = ({ title, movies }) => {
             </button>
           </div>
         </div>
-
         <div
-          className=" flex gap-8 max-sm:gap-4 w-full overflow-x-scroll myscroll"
+          className=" flex gap-8 max-sm:gap-4 w-full overflow-x-scroll myscroll [prespective:1000px]"
           ref={divRef}
         >
           {movies?.map((movie) => (

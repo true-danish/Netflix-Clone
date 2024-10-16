@@ -15,8 +15,9 @@ const MovieCard = ({ poster, title, id, movie }) => {
         to={"/browse/movie/" + id}
         state={{ movie: movie }}
         onClick={handleClick}
+        className=" "
       >
-        <div className="w-44 max-sm:w-28  aspect-[2/3]  shrink-0 cursor-pointer hover:scale-95  hover:outline-1 outline outline-white outline-0  transition-all">
+        <div className="w-44 max-sm:w-28  aspect-[2/3]  shrink-0 cursor-pointer hover:scale-95    hover:outline-1 outline outline-white outline-0  transition-all">
           <img src={IMG_CDN + poster} alt={title} className="w-full h-full" />
         </div>
       </Link>
