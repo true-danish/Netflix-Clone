@@ -2,13 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import {
-  removeAllMovies,
-  removeMovie,
-  removeMovieList,
-  removePoster,
-  removeTrailer,
-} from "../utils/moviesSlice";
+import { removeAllMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeGpt } from "../utils/gptSlice";

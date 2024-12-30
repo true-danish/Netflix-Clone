@@ -1,4 +1,3 @@
-import { click } from "@testing-library/user-event/dist/click";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

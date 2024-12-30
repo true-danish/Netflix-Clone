@@ -18,6 +18,7 @@ const Login = () => {
 
   useEffect(() => {
     setUserEmail(emailData);
+    // eslint-disable-next-line
   }, []);
 
   const handleSignClick = (e) => {

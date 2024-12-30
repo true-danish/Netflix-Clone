@@ -77,6 +77,7 @@ const MoviePage = () => {
 
     fetchVideo();
     fetchRelated();
+    // eslint-disable-next-line
   }, []);
   return (
     <div className="relative">
@@ -119,7 +120,6 @@ const MoviePage = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
-          //{" "}
         </div>
       )}
       <div className="">
