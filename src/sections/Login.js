@@ -17,7 +17,6 @@ const Login = () => {
   const emailData = useLocation()?.state?.userEmail;
 
   useEffect(() => {
-    // console.log(userEmail);
     setUserEmail(emailData);
   }, []);
 
