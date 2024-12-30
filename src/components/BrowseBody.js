@@ -6,6 +6,7 @@ import useMovieList from "../hooks/useMovieList";
 
 const BrowseBody = () => {
   console.log("broseBody");
+  const ball = document.querySelector(".ball");
 
   useSetMovieDetails();
   useMovieList();

@@ -26,4 +26,23 @@
   .myscroll::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
+  .moviecard {
+    transition: transform 300ms ease;
+  }
+
+  .moviecard:hover {
+    transform: perspective(800px) translateZ(-100px);
+  }
+  .moviecard:hover + * {
+    transform: perspective(800px) rotateY(-40deg);
+  }
+  .moviecard:hover + * + * {
+    transform: perspective(800px) rotateY(-50deg);
+  }
+  .moviecard:has(+ *:hover) {
+    transform: perspective(800px) rotateY(50deg);
+  }
+  .moviecard:has(+ * + *:hover) {
+    transform: perspective(800px) rotateY(40deg);
+  }
 }

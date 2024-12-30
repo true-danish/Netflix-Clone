@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpContext } from "../utils/myContext";
 import { signOut } from "firebase/auth";
@@ -15,6 +15,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const gptIsActive = useSelector((store) => store.gpt.isActive);
+
   useAuthChange();
 
   const handleGptClick = () => {

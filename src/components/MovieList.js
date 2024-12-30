@@ -26,7 +26,7 @@ const MovieList = ({ title, movies }) => {
           </div>
         </div>
         <div
-          className=" flex gap-8 max-sm:gap-4 w-full overflow-x-scroll myscroll [prespective:1000px]"
+          className="moviecard-container flex gap-8 max-sm:gap-4 w-full overflow-x-scroll overflow-y-hidden myscroll [prespective:1000px]"
           ref={divRef}
         >
           {movies?.map((movie) => (
