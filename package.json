@@ -2,7 +2,6 @@
   "name": "netflix_gpt",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://netflixgpt-57b45.firebaseapp.com/",
   "dependencies": {
     "@google/generative-ai": "^0.20.0",
     "@reduxjs/toolkit": "^2.2.7",
